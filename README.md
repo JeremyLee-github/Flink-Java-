@@ -9,22 +9,22 @@
 
 - 2.模擬工業溫度感應器數據即時監控流程
 
-  2.1(在10秒內溫度連去上升進行報警!!)
+   - 2.1(在10秒內溫度連去上升進行報警!!)
   
      Socket(數據輸出) -> Flink(keyby=>KeyedProcessFunction) -> 輸出報警
 
-  2.2(高溫,低溫分流監控!!)
+  - 2.2(高溫,低溫分流監控!!)
   
      Socket(數據輸出) -> Flink(keyby=>ProcessFunction) -> 輸出訊號
      依高溫和低溫分為主流與分流,使用ProcessFunction內Output方式分流輸出
 
-3.電商用戶行為數據分析
+- 3.電商用戶行為數據分析
   
-  3.1即時熱門商品統計(統計1小時內的熱門商品,每五分鐘更新一次)
+  - 3.1即時熱門商品統計(統計1小時內的熱門商品,每五分鐘更新一次)
   
      DataStream(數據輸入)=>WaterMark=>KeyBy=>Window=>.aggregate( AggregateFunction(), WindowFunction())=>keyBy=>.process(KeyedProcessFunction())=>數據分析輸出
   
-  3.2即時熱門頁面流量統計(統計每分鐘IP訪問流量,取出訪問量最大的前5個地址,每五秒鐘更新一次)
+  - 3.2即時熱門頁面流量統計(統計每分鐘IP訪問流量,取出訪問量最大的前5個地址,每五秒鐘更新一次)
   
      DataStream(數據輸入)=>WaterMark=>KeyBy=>Window=>.aggregate( AggregateFunction(), WindowFunction())=>keyBy=>.process(KeyedProcessFunction())=>數據分析輸出
  
