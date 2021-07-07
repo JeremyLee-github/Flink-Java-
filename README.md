@@ -56,12 +56,10 @@
   
       - connect:(針對異常報警處理!!)
        
-       DataStream1(數據輸入).keyBy()
+       DataStream1(數據輸入).keyBy() with DataStream2(數據輸入).keyBy()
                                      =>合併.connect()=>.process(CoProcessFunction())==>數據分析輸出
-       DataStream2(數據輸入).keyBy()
-
+       
       - intervalJoin:(只能輸出正常匹配事件)
      
-       DataStream1(數據輸入).keyBy()
+       DataStream1(數據輸入).keyBy() with DataStream2(數據輸入).keyBy()
                                      =>合併.intervalJoin()=>.process(ProcessJoinFunction())==>數據分析輸出
-       DataStream2(數據輸入).keyBy()
