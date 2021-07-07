@@ -54,10 +54,10 @@
 
   - 3.9付款即時對帳監控(用戶下單並完成支付,應查詢其到帳訊息,進行即時帳單支付比對,對有不符合支付訊息跟到帳訊息的資料,進行輸出報警)
   
-     connect:(針對異常報警處理!!)
-     DataStream1(數據輸入).keyBy()
-                                   =>合併.connect()=>.process(CoProcessFunction())==>數據分析輸出
-     DataStream2(數據輸入).keyBy()
+       connect:(針對異常報警處理!!)
+       DataStream1(數據輸入).keyBy()
+                                     =>合併.connect()=>.process(CoProcessFunction())==>數據分析輸出
+       DataStream2(數據輸入).keyBy()
 
      intervalJoin:(只能輸出正常匹配事件)
      DataStream1(數據輸入).keyBy()
