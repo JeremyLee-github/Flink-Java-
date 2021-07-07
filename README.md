@@ -1,8 +1,9 @@
 # Flink-1.12 (Java)
 使用Java code操作Flink
+
+使用DataStream跟WaterMark搭配keyBy,Window與PcessFunction進行資料處理,或將DataStream與TableStream搭配Tab API和Flink SQL進行資料處理操作!!!
 - 基本操作
 - Kafka連線
-使用DataStream跟WaterMark搭配keyBy,Window與PcessFunction進行資料處理,或將DataStream與TableStream搭配Tab API和Flink SQL進行資料處理操作!!!
 
 1.Kafka對應連接輸入與輸出
 
