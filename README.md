@@ -11,11 +11,9 @@
 
    - 2.1(在10秒內溫度連去上升進行報警!!)
    
-   
      Socket(數據輸出) -> Flink(keyby=>KeyedProcessFunction) -> 輸出報警
 
   - 2.2(高溫,低溫分流監控!!)
-  
   
      Socket(數據輸出) -> Flink(keyby=>ProcessFunction) -> 輸出訊號
      (依高溫和低溫分為主流與分流,使用ProcessFunction內Output方式分流輸出)
@@ -57,11 +55,13 @@
   - 3.9付款即時對帳監控(用戶下單並完成支付,應查詢其到帳訊息,進行即時帳單支付比對,對有不符合支付訊息跟到帳訊息的資料,進行輸出報警)
   
        connect:(針對異常報警處理!!)
+       
        DataStream1(數據輸入).keyBy()
                                      =>合併.connect()=>.process(CoProcessFunction())==>數據分析輸出
        DataStream2(數據輸入).keyBy()
 
-     intervalJoin:(只能輸出正常匹配事件)
-     DataStream1(數據輸入).keyBy()
-                                   =>合併.intervalJoin()=>.process(ProcessJoinFunction())==>數據分析輸出
-     DataStream2(數據輸入).keyBy()
+       intervalJoin:(只能輸出正常匹配事件)
+     
+       DataStream1(數據輸入).keyBy()
+                                     =>合併.intervalJoin()=>.process(ProcessJoinFunction())==>數據分析輸出
+       DataStream2(數據輸入).keyBy()
